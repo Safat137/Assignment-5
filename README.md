@@ -1,27 +1,32 @@
-1. What is the difference between var, let, and const?
-var — function-scoped, hoisted, can be re-declared and updated. Avoid in modern JS.(ignore this)
+1️.What is the difference between var, let, and const?
+Answer:
+var, let এবং const JavaScript এ variable declare করার জন্য ব্যবহার করা হয়।
+var আগে বেশি ব্যবহার করা হতো।
+let দিয়ে variable বানালে পরে তার value change করা যায়।
+const দিয়ে variable বানালে পরে তার value change করা যায় না।
 
-let — block-scoped, not re-declarable, but can be updated. Use for variables that change.
+2️.What is the spread operator (...)?
+Answer:
+Spread operator (...) ব্যবহার করা হয় array বা object এর ভ্যালুগুলো আলাদা করে বের করা বা copy করার জন্য।
+let arr1 = [1,2,3];
+let arr2 = [...arr1];
 
-const — block-scoped, not re-declarable or reassignable. Use by default for everything else.
 
-2. What is the spread operator (...)?
+3️.What is the difference between map(), filter(), and forEach()?
+Answer:
+map() array এর প্রতিটি element এর উপর কাজ করে এবং নতুন array return করে।
+filter() condition অনুযায়ী কিছু element নিয়ে নতুন array return করে।
+forEach() array এর প্রতিটি element এর উপর কাজ করে কিন্তু নতুন array return করে না।
 
-    The spread operator (...) expands an iterable into individual elements.
+4️.What is an arrow function?
+Answer:
+Arrow function হলো JavaScript এ function লেখার একটি ছোট এবং সহজ উপায়।
+const sum = (a, b) => a + b;
 
-3. What is the difference between map(), filter(), and forEach()?
- 
-    map() — transforms each element, returns new array
 
-    filter() — keeps elements that pass a condition, returns new array
-
-    forEach() — loops through elements, returns nothing
-
-4.  What is an arrow function?
-
-    Arrow Functions allow a shorter syntax for function expressions.
-    you can skip the function keyword, the return keyword, and the curly brackets.
-
-5.What are template literals?
-
-  Template Strings use back-ticks (``) rather than the quotes ("") to define a string. Template Strings allow both single and double quotes inside a string. Template Strings allow multiline strings.
+5️.What are template literals?
+Answer:
+Template literals ব্যবহার করা হয় string এর মধ্যে variable বসানোর জন্য।
+এটা backtick ( ) দিয়ে লেখা হয়।
+let name = "Safat";
+console.log(`My name is ${name}`);
