@@ -19,11 +19,11 @@ function renderCards(issues) {
             if (l.toLowerCase() === 'bug') colors = "bg-red-50 text-red-600 border-red-100";
             if (l.toLowerCase() === 'enhancement') colors = "bg-green-50 text-green-600 border-green-100";
             if (l.toLowerCase().includes('help')) colors = "bg-yellow-50 text-yellow-600 border-yellow-100";
-
+            
             return `<span class="${colors} text-[10px] px-2 py-0.5 rounded-md border font-bold uppercase flex items-center gap-1">
                         <img src="assets/${l.replace(' ', '')}.png" class="w-2.5 h-2.5" onerror="this.style.display='none'"> 
                         ${l}</span>`;
-        }).join('');
+                    }).join('');
 
         return `
             <div class="bg-white p-5 rounded-xl border border-gray-100 border-t-4 ${borderColor} shadow-sm hover:shadow-md transition cursor-pointer flex flex-col h-full" onclick="openModal('${issue.id}')">
@@ -53,22 +53,22 @@ function renderCards(issues) {
 
 async function fetchIssues() {
     issueContainer.innerHTML = '';
-    if (loader) loader.classList.remove('hidden');
+    if(loader) loader.classList.remove('hidden');
 
     const url = 'https://phi-lab-server.vercel.app/api/v1/lab/issues';
 
     try {
         const res = await fetch(url);
         const result = await res.json();
-
+        
         allIssues = Array.isArray(result) ? result : (result.data || []);
 
         applyFilter('all');
     } catch (err) {
         console.error("Fetch Error:", err);
         issueCountText.innerText = "Error loading data";
-
-        if (loader) loader.classList.add('hidden');
+        
+        if(loader) loader.classList.add('hidden');
     }
 }
 
@@ -80,7 +80,7 @@ function handleSearch() {
         applyFilter(status);
         return;
     }
-    const filteredResults = allIssues.filter(issue =>
+    const filteredResults = allIssues.filter(issue => 
         issue.title.toLowerCase().includes(query)
     );
 
@@ -97,7 +97,7 @@ function applyFilter(statusType) {
 
     setTimeout(() => {
         const filtered = statusType === 'all' ? allIssues : allIssues.filter(issue => issue.status.toLowerCase() === statusType.toLowerCase());
-
+        
         issueCountText.innerText = `${filtered.length} Issues`;
         renderCards(filtered);
 
@@ -126,7 +126,7 @@ async function openModal(id) {
     const result = await res.json();
     const issue = Array.isArray(result) ? result[0] : (result.data || result);
 
-    const labelsHtml = (issue.labels || []).map(l =>
+    const labelsHtml = (issue.labels || []).map(l => 
         `<span class="bg-gray-100 text-gray-600 px-2 py-1 rounded text-[10px] font-bold border"># ${l}</span>`
     ).join(' ');
 
